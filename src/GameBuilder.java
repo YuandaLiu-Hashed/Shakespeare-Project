@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class GameBuilder {
 
@@ -7,6 +9,7 @@ public class GameBuilder {
     HashMap<String, Integer> markerTable = new HashMap<>();
 
     public void verify() {
+        HashSet<String> usedMarkers = new HashSet<>();
         for (GameEvent event: events) {
             switch (event.type) {
                 case AddOption: {
@@ -15,6 +18,7 @@ public class GameBuilder {
                         System.out.println("ERROR: Marker " + e.mark + " doesn't exist");
                         System.exit(1);
                     }
+                    usedMarkers.add(e.mark);
                     break;
                 }
                 case Jump: {
@@ -23,10 +27,16 @@ public class GameBuilder {
                         System.out.println("ERROR: Marker " + e.mark + " doesn't exist");
                         System.exit(1);
                     }
+                    usedMarkers.add(e.mark);
                     break;
                 }
                 default:
                     break;
+            }
+        }
+        for (String mark: markerTable.keySet()) {
+            if (!usedMarkers.contains(mark)) {
+                System.out.println("WARNING: Marker " + mark + " is defined but not used");
             }
         }
     }
