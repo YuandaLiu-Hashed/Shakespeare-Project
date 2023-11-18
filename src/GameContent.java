@@ -12,10 +12,12 @@ public class GameContent {
         builder.addOption("Option A", "A");
         builder.addOption("Option B", "B");
         builder.presentAndWait();
+
+        builder.clearText();
         builder.takeOption();
 
         //----------------------------------------------------------------------
-        // Option B
+        // Option A
         //----------------------------------------------------------------------
         builder.mark("A");
         builder.addText("You got ending A");
@@ -23,7 +25,7 @@ public class GameContent {
         builder.endGame();
 
         //----------------------------------------------------------------------
-        // Option A
+        // Option B
         //----------------------------------------------------------------------
         builder.mark("B");
         builder.addText("You got ending B");
