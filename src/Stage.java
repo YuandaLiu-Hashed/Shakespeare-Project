@@ -36,7 +36,6 @@ public class Stage {
                 case AddText: {
                     textPresenter.addTextEvent((AddTextGameEvent) event);
                     programCounter++;
-                    System.out.print("Text Added");
                     break;
                 }
                 case ClearText: {
