@@ -3,16 +3,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Stage {
-    TextPresenter textPresenter = new TextPresenter();
-    ControlPressenter controlPressenter = new ControlPressenter();
+    private TextPresenter textPresenter = new TextPresenter();
+    private ControlPressenter controlPressenter = new ControlPressenter();
 
-    final ArrayList<GameEvent> events;
-    final HashMap<String, Integer> markerTable;
+    private final ArrayList<GameEvent> events;
+    private final HashMap<String, Integer> markerTable;
 
-    final ArrayList<String> jumpTable = new ArrayList<>();
+    private final ArrayList<String> jumpTable = new ArrayList<>();
     private String targetOption = null;
-    int programCounter = 0;
-    boolean waiting = false;
+    private int programCounter = 0;
+    private boolean waiting = false;
 
     Stage() {
         // build game
@@ -27,7 +27,7 @@ public class Stage {
         return controlPressenter.completedAnimation() && !waiting;
     }
 
-    void updateStage() {
+    private void updateStage() {
         if (programCounter >= events.size()) return;
         while (canProceed()) {
             GameEvent event = events.get(programCounter);

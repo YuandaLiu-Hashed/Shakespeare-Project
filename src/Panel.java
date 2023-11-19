@@ -6,10 +6,10 @@ import java.util.concurrent.TimeUnit;
 
 public class Panel extends JPanel implements Runnable, KeyListener {
 
-    static float FPS = 60;
-    boolean shouldRun = true;
-    Thread drawingThread = new Thread(this);
-    Stage stage = new Stage();
+    public static float FPS = 60;
+    private boolean shouldRun = true;
+    private Thread drawingThread = new Thread(this);
+    private Stage stage = new Stage();
 
     public Panel() {
         drawingThread.start();

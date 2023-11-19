@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class ControlPressenter {
 
-    private ArrayList<String> options = new ArrayList<>();
+    private final ArrayList<String> options = new ArrayList<>();
 
     private boolean shouldShow = false;
     private float factor = 0;
@@ -30,17 +30,17 @@ public class ControlPressenter {
         return (shouldShow && factor == 1) || (!shouldShow && factor == 0);
     }
 
-    static float OptionHeight = 40;
-    static float IndexBoxSize = 38;
-    static float SelectionInset = 3;
-    static Stroke SelectionStoke = new BasicStroke(2);
-    static String Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    // Constants
+    static final float OptionHeight = 40;
+    static final float IndexBoxSize = 38;
+    static final float SelectionInset = 3;
+    static final Stroke SelectionStoke = new BasicStroke(2);
+    static final String Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public void draw(Graphics2D g2D, Dimension size, float reservedBottom) {
 
         Font font = new Font("Courier", Font.PLAIN, 20);
         g2D.setFont(font);
-
 
         // animate factor
         float showRate = 1 / (Panel.FPS * 0.3f); // complete fade in 0.5 seconds
