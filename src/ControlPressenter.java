@@ -39,7 +39,7 @@ public class ControlPressenter {
 
     public void draw(Graphics2D g2D, Dimension size, float reservedBottom) {
 
-        Font font = new Font("Courier", Font.PLAIN, 20);
+        Font font = Main.firstFolioFont.deriveFont(22.0f);
         g2D.setFont(font);
 
         // animate factor

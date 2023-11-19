@@ -49,7 +49,7 @@ public class TextPresenter {
 
     public void draw(Graphics2D g2D, Dimension size, float reservedBottom) {
 
-        Font font = new Font("Courier", Font.PLAIN, 20);
+        Font font = Main.firstFolioFont.deriveFont(28.0f);
         g2D.setFont(font);
 
         FontRenderContext context = g2D.getFontRenderContext();
