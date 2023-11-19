@@ -57,7 +57,7 @@ public class Stage {
                 }
                 case TakeOption: {
                     if (targetOption == null) {
-                        System.out.print("ERROR: No option taken.");
+                        System.out.println("ERROR: No option taken.");
                         System.exit(1);
                     }
                     programCounter = markerTable.get(targetOption);
