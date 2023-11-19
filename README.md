@@ -6,8 +6,13 @@ A Hamlet choose your own adventure game.
 # Building the Project
 
 1. Download IntelliJ IDEA, community edition is fine
-2. Install Github (Github Desktop App recommended)
-3. Open the directory of this repo, and IntelliJ should recognize it.
+3. Install Github (Github Desktop App recommended)
+4. Clone this repo to local
+5. Open the directory of this repo, and IntelliJ should recognize it.
+
+# Play the Game
+
+Currently mouse interactions are not implemented. The 1, 2, 3, and 4 key are the A, B, C, and D choises, and the enter key is "NEXT".
 
 # Story System
 The story is generated once at the start of the program in the static function `buildGame` in `GameContent`.
