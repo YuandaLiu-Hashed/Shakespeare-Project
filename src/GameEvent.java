@@ -3,9 +3,6 @@ abstract class GameEvent {
     GameEvent(GameEventType type) {
         this.type = type;
     }
-    public GameEventType getType() {
-        return type;
-    }
 }
 
 enum GameEventType {
