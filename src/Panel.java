@@ -41,15 +41,19 @@ public class Panel extends JPanel implements Runnable, KeyListener {
             case '\n':
                 stage.chooseSkip();
                 break;
+            case 'a':
             case '1':
                 stage.choose(0);
                 break;
+            case 'b':
             case '2':
                 stage.choose(1);
                 break;
+            case 'c':
             case '3':
                 stage.choose(2);
                 break;
+            case 'd':
             case '4':
                 stage.choose(3);
                 break;
