@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Stage {
     private TextPresenter textPresenter = new TextPresenter();
-    private ControlPressenter controlPressenter = new ControlPressenter();
+    private ControlPresenter controlPresenter = new ControlPresenter();
 
     private final ArrayList<GameEvent> events;
     private final HashMap<String, Integer> markerTable;
@@ -24,7 +24,7 @@ public class Stage {
     }
 
     private boolean canProceed() {
-        return controlPressenter.completedAnimation() && !waiting;
+        return controlPresenter.completedAnimation() && !waiting;
     }
 
     private void updateStage() {
@@ -44,7 +44,7 @@ public class Stage {
                 }
                 case AddOption: {
                     AddOptionGameEvent opt = (AddOptionGameEvent)event;
-                    controlPressenter.addOption(opt.prompt);
+                    controlPresenter.addOption(opt.prompt);
                     jumpTable.add(opt.mark);
                     targetOption = null;
                     programCounter++;
@@ -64,7 +64,7 @@ public class Stage {
                     break;
                 }
                 case PresentAndWait: {
-                    controlPressenter.showOptions();
+                    controlPresenter.showOptions();
                     targetOption = null;
                     waiting = true;
                     programCounter++;
@@ -80,13 +80,13 @@ public class Stage {
 
     void chooseSkip() {
         if (!jumpTable.isEmpty()) return;
-        controlPressenter.skip();
+        controlPresenter.skip();
         waiting = false;
     }
 
     void choose(int option) {
         if (option < 0 || option >= jumpTable.size()) return;
-        controlPressenter.chooseOptions(option);
+        controlPresenter.chooseOptions(option);
         targetOption = jumpTable.get(option);
         jumpTable.clear();
         waiting = false;
@@ -101,6 +101,6 @@ public class Stage {
         updateStage();
 
         textPresenter.draw(g2D, size, 180);
-        controlPressenter.draw(g2D, size, 180);
+        controlPresenter.draw(g2D, size, 180);
     }
 }

@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class ControlPressenter {
+public class ControlPresenter {
 
     private final ArrayList<String> options = new ArrayList<>();
 
