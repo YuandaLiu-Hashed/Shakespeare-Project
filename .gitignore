@@ -1,4 +1,4 @@
 
 .DS_Store
-out/production/
+out/
 .idea/checkstyle-idea.xml
