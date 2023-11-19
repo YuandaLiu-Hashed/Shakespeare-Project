@@ -1,8 +1,4 @@
-import javax.swing.text.Style;
 import java.awt.*;
-import java.awt.font.FontRenderContext;
-import java.awt.font.GlyphVector;
-import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
 public class ControlPressenter {
