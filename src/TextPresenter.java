@@ -114,7 +114,7 @@ public class TextPresenter {
 
         // Draw Text
         for (TextElement element: elements) {
-            g2D.setColor(new Color(0, 0, 0, element.factor));
+            g2D.setColor(Main.getFillColor(element.factor));
             float drawYPos = size.height + element.yPos - reservedBottom - 50;
             g2D.drawString(element.text, 10, drawYPos);
         }

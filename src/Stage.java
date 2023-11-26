@@ -98,6 +98,10 @@ public class Stage {
 
         Graphics2D g2D = (Graphics2D)g;
 
+        if (Main.oldPaperImage != null) {
+            g2D.drawImage(Main.oldPaperImage, 0, 0, (int) size.getWidth(), (int) size.getHeight(), null);
+        }
+
         updateStage();
 
         textPresenter.draw(g2D, size, 180);
