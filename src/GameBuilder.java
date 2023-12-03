@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
 
 public class GameBuilder {
 
@@ -40,6 +41,11 @@ public class GameBuilder {
         }
     }
 
+    public void playAudio(String fileName) {
+        GameEvent event = new PlayAudioGameEvent(fileName);
+        events.add(event);
+    }
+
     public void addText(String text) {
         GameEvent event = new AddTextGameEvent(text);
         events.add(event);
@@ -65,9 +71,13 @@ public class GameBuilder {
         events.add(event);
     }
 
-    public void presentAndWait() {
-        GameEvent event = new PresentAndWaitGameEvent();
+    public void presentAndWait(Set<WaitOptions> options) {
+        GameEvent event = new PresentAndWaitGameEvent(options);
         events.add(event);
+    }
+
+    public void presentAndWait() {
+        presentAndWait(Set.of(WaitOptions.UserInteraction));
     }
 
     public void endGame() {

@@ -5,6 +5,8 @@ import java.util.HashMap;
 public class Stage {
     private TextPresenter textPresenter = new TextPresenter();
     private ControlPresenter controlPresenter = new ControlPresenter();
+    private AudioPresenter audioPresenter = new AudioPresenter();
+
 
     private final ArrayList<GameEvent> events;
     private final HashMap<String, Integer> markerTable;
@@ -12,7 +14,8 @@ public class Stage {
     private final ArrayList<String> jumpTable = new ArrayList<>();
     private String targetOption = null;
     private int programCounter = 0;
-    private boolean waiting = false;
+    private boolean waitingForUsrInput = false;
+    private boolean waitingForAudioPlayback = false;
 
     Stage() {
         // build game
@@ -24,7 +27,10 @@ public class Stage {
     }
 
     private boolean canProceed() {
-        return controlPresenter.completedAnimation() && !waiting;
+        if (waitingForAudioPlayback && audioPresenter.finishedPlaying()) {
+            waitingForAudioPlayback = false;
+        }
+        return controlPresenter.completedAnimation() && !waitingForUsrInput && !waitingForAudioPlayback;
     }
 
     private void updateStage() {
@@ -64,14 +70,26 @@ public class Stage {
                     break;
                 }
                 case PresentAndWait: {
-                    controlPresenter.showOptions();
-                    targetOption = null;
-                    waiting = true;
+                    PresentAndWaitGameEvent wait = (PresentAndWaitGameEvent)event;
+                    if (wait.options.contains(WaitOptions.UserInteraction)) {
+                        controlPresenter.showOptions();
+                        targetOption = null;
+                        waitingForUsrInput = true;
+                    }
+                    if (wait.options.contains(WaitOptions.AudioPlayback)) {
+                        waitingForAudioPlayback = true;
+                    }
                     programCounter++;
                     break;
                 }
                 case End: {
                     System.exit(0);
+                    break;
+                }
+                case PlayAudio: {
+                    PlayAudioGameEvent playEvent = (PlayAudioGameEvent)event;
+                    audioPresenter.playClip(playEvent.fileName);
+                    programCounter++;
                     break;
                 }
             }
@@ -81,7 +99,7 @@ public class Stage {
     void chooseSkip() {
         if (!jumpTable.isEmpty()) return;
         controlPresenter.skip();
-        waiting = false;
+        waitingForUsrInput = false;
     }
 
     void choose(int option) {
@@ -89,7 +107,7 @@ public class Stage {
         controlPresenter.chooseOptions(option);
         targetOption = jumpTable.get(option);
         jumpTable.clear();
-        waiting = false;
+        waitingForUsrInput = false;
     }
 
     public void drawStage(Graphics g, Dimension size) {
@@ -106,5 +124,6 @@ public class Stage {
 
         textPresenter.draw(g2D, size, 180);
         controlPresenter.draw(g2D, size, 180);
+        audioPresenter.update();
     }
 }

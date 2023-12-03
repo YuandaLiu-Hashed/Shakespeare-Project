@@ -1,3 +1,5 @@
+import java.util.Set;
+
 abstract class GameEvent {
     protected GameEventType type;
     GameEvent(GameEventType type) {
@@ -6,7 +8,11 @@ abstract class GameEvent {
 }
 
 enum GameEventType {
-    AddText, ClearText, Jump, AddOption, TakeOption, PresentAndWait, End
+    AddText, ClearText, Jump, AddOption, TakeOption, PresentAndWait, End, PlayAudio
+}
+
+enum WaitOptions {
+    UserInteraction, AudioPlayback
 }
 
 class AddTextGameEvent extends GameEvent {
@@ -47,9 +53,19 @@ class TakeOptionGameEvent extends GameEvent {
     }
 }
 
+class PlayAudioGameEvent extends GameEvent {
+    final String fileName;
+    PlayAudioGameEvent(String fileName) {
+        super(GameEventType.PlayAudio);
+        this.fileName = fileName;
+    }
+}
+
 class PresentAndWaitGameEvent extends GameEvent {
-    PresentAndWaitGameEvent() {
+    Set<WaitOptions> options;
+    PresentAndWaitGameEvent(Set<WaitOptions> options) {
         super(GameEventType.PresentAndWait);
+        this.options = options;
     }
 }
 

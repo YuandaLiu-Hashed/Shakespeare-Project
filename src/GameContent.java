@@ -1,3 +1,5 @@
+import java.util.Set;
+
 public class GameContent {
     static void buildGame(GameBuilder builder) {
 
@@ -11,6 +13,8 @@ public class GameContent {
         builder.addText("This is a example choice:");
         builder.addOption("Option A", "A");
         builder.addOption("Option B", "B");
+        builder.playAudio("dummy.wav");
+
         builder.presentAndWait();
 
         builder.clearText();
