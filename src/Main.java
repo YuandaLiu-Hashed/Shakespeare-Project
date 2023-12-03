@@ -8,7 +8,7 @@ public class Main {
     public static Font firstFolioFont;
     public static BufferedImage oldPaperImage;
     public static Color getBgProximateColor(float alpha) {
-        return new Color(1.0f, 0.91f, 0.74f, alpha);
+        return new Color(1.0f, 0.91f, 0.80f, alpha);
     }
     public static Color getFillColor(float alpha) {
         return new Color(0.20f, 0.10f, 0.0f, alpha);
@@ -34,7 +34,7 @@ public class Main {
             InputStream is = Main.class.getResourceAsStream("Old-Paper.jpg");
             oldPaperImage = ImageIO.read(is);
         } catch (Exception e) {
-            System.out.println("Unable to load font");
+            System.out.println("Unable to load old paper image");
             System.out.println(e.toString());
             oldPaperImage = null;
         }
