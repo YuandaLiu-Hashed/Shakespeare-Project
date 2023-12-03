@@ -10,6 +10,7 @@ public class GameBuilder {
 
     public void verify() {
         HashSet<String> usedMarkers = new HashSet<>();
+        // get all used markers, and check if they are defined
         for (GameEvent event: events) {
             switch (event.type) {
                 case AddOption: {
@@ -34,6 +35,7 @@ public class GameBuilder {
                     break;
             }
         }
+        // check if all defined markers are used
         for (String mark: markerTable.keySet()) {
             if (!usedMarkers.contains(mark)) {
                 System.out.println("WARNING: Marker " + mark + " is defined but not used");
