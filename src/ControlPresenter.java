@@ -33,8 +33,8 @@ public class ControlPresenter {
     // Constants
     static final float OptionHeight = 40;
     static final float IndexBoxSize = 38;
-    static final float SelectionInset = 3;
-    static final Stroke SelectionStoke = new BasicStroke(2);
+    static final float SelectionInset = 1.5f;
+    static final Stroke SelectionStoke = new BasicStroke(3);
     static final String Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public void draw(Graphics2D g2D, Dimension size, float reservedBottom) {
@@ -78,24 +78,29 @@ public class ControlPresenter {
 
             float midY = size.height - reservedBottom + padding + OptionHeight * i + OptionHeight / 2;
 
-            // draw box
-            g2D.setColor(Main.getFillColor(factor));
-            g2D.fillRect(10, (int)(midY - IndexBoxSize / 2), (int)IndexBoxSize, (int) IndexBoxSize);
-
             // draw selection box
             if (i == selected) {
+                // draw wire box
                 g2D.setStroke(SelectionStoke);
-                g2D.setColor(Main.getBgProximateColor(factor));
+                g2D.setColor(Main.getFillColor(factor));
                 g2D.drawRect(
                         (int)(10 + SelectionInset),
                         (int)(midY - IndexBoxSize / 2 + SelectionInset),
                         (int)(IndexBoxSize - SelectionInset * 2),
                         (int)(IndexBoxSize - SelectionInset * 2)
                 );
+
+                // set index to be dark
+                g2D.setColor(Main.getFillColor(factor));
+            } else {
+                // draw box
+                g2D.setColor(Main.getFillColor(factor));
+                g2D.fillRect(10, (int)(midY - IndexBoxSize / 2), (int)IndexBoxSize, (int) IndexBoxSize);
+                // set index to be bright
+                g2D.setColor(Main.getBgProximateColor(factor));
             }
 
             // draw index in box
-            g2D.setColor(Main.getBgProximateColor(factor));
             String index = Alphabet.substring(i, i+1);
             float indexWidth = metrics.stringWidth(index);
             g2D.drawString(index, 10 + IndexBoxSize / 2.0f - indexWidth / 2.0f,
@@ -110,10 +115,11 @@ public class ControlPresenter {
         if (options.isEmpty()) {
             float midY = size.height - padding;
             g2D.setColor(Main.getFillColor(factor));
-            g2D.fillRect(size.width - 10 - 100, (int)(midY - IndexBoxSize / 2), 100, (int)IndexBoxSize);
-            g2D.setColor(Main.getBgProximateColor(factor));
 
-            if (!shouldShow) {
+            if (shouldShow) {
+                g2D.fillRect(size.width - 10 - 100, (int)(midY - IndexBoxSize / 2), 100, (int)IndexBoxSize);
+                g2D.setColor(Main.getBgProximateColor(factor));
+            } else {
                 g2D.setStroke(SelectionStoke);
                 g2D.drawRect(
                         (int)(size.width - 10 - 100 + SelectionInset),

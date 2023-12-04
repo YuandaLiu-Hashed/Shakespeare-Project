@@ -83,7 +83,7 @@ public class TextPresenter {
         }
 
         // Animate Vertical Position
-        float factor = 1 - (float)Math.pow(1 - 0.9f, 1 / Panel.FPS);
+        float factor = 1 - (float)Math.pow(1 - 0.8f, 1 / Panel.FPS);
         for (TextElement element: elements) {
             element.yPos += (element.yPosTarget - element.yPos) * factor;
         }
