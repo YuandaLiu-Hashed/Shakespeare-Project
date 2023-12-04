@@ -84,6 +84,11 @@ public class Main {
             }
         }
 
+        // To use interactive voting, create a .txt file named
+        // 'Straw-Poll-API-Key.txt' into 'assets' folder, and put the Straw
+        // Poll API Key in it. Then, add a Command Line argument 'poll' in the
+        // project RUN configuration.
+
         try {
             InputStream is = Main.class.getResourceAsStream("Straw-Poll-API-Key.txt");
             Scanner s = new Scanner(is);
@@ -96,7 +101,7 @@ public class Main {
             }
             pollAPIKey = line;
         } catch (Exception e) {
-            System.out.println("Unable to load Straw API Key");
+            System.out.println("Unable to load Straw Poll API Key");
             System.out.println(e.toString());
         }
     }
