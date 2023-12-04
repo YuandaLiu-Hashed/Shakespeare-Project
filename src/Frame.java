@@ -7,7 +7,7 @@ public class Frame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().add(panel);
         setSize(700, 600);
-        setMinimumSize(new Dimension(700, 600));
+        setMinimumSize(new Dimension(Main.widthLimit, 600));
         setTitle("Shakespeare Project");
     }
 }

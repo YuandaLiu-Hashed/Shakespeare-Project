@@ -1,7 +1,9 @@
+import javax.swing.text.html.CSS;
 import java.awt.*;
-import java.awt.font.FontRenderContext;
-import java.awt.font.GlyphVector;
+import java.awt.font.*;
 import java.awt.geom.Rectangle2D;
+import java.text.AttributedCharacterIterator;
+import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -20,15 +22,23 @@ public class TextPresenter {
 
         PresentationStage stage = PresentationStage.entering;
         float factor = 0;
-        final String text;
-        final Dimension size;
+        ArrayList<TextLayout> layouts = new ArrayList<>();
+        float height = 0;
 
-        TextElement(String text, Font font, FontRenderContext context) {
-            this.text = text;
+        TextElement(String text, Font font, float wrappingWidth, FontRenderContext context) {
+            AttributedString styledText = new AttributedString(text);
+            styledText.addAttribute(TextAttribute.FONT, font);
+            AttributedCharacterIterator itr = styledText.getIterator();
+            int endIndex = itr.getEndIndex();
 
+            LineBreakMeasurer measurer = new LineBreakMeasurer(itr, context);
+            while (measurer.getPosition() < endIndex) {
+                TextLayout layout = measurer.nextLayout(wrappingWidth);
+                layouts.add(layout);
+                height += layout.getAscent() + layout.getDescent() + layout.getLeading();
+            }
             GlyphVector vector = font.createGlyphVector(context, text);
             Rectangle2D rect = vector.getLogicalBounds();
-            size = new Dimension((int)rect.getWidth(), (int)rect.getHeight());
         }
 
         void setInitialPosition(float y) {
@@ -48,6 +58,7 @@ public class TextPresenter {
     }
 
     public void draw(Graphics2D g2D, Dimension size, float reservedBottom) {
+        float stageLeftBound = (float)(size.width - Main.widthLimit) / 2;
 
         Font font = Main.firstFolioFont.deriveFont(28.0f);
         g2D.setFont(font);
@@ -60,8 +71,8 @@ public class TextPresenter {
         while (!pendingEvents.isEmpty()) {
             hasNew = true;
             AddTextGameEvent event = pendingEvents.removeFirst();
-            TextElement newTextElement = new TextElement(event.text, font, context);
-            yBottom += newTextElement.size.height;
+            TextElement newTextElement = new TextElement(event.text, font, Main.widthLimit - 20, context);
+            yBottom += newTextElement.height;
             newTextElement.setInitialPosition(yBottom);
             elements.add(newTextElement);
         }
@@ -115,8 +126,12 @@ public class TextPresenter {
         // Draw Text
         for (TextElement element: elements) {
             g2D.setColor(Main.getFillColor(element.factor));
-            float drawYPos = size.height + element.yPos - reservedBottom - 50;
-            g2D.drawString(element.text, 10, drawYPos);
+            float drawYPos = size.height + element.yPos - element.height - reservedBottom - 50;
+            for (TextLayout layout: element.layouts) {
+                drawYPos += layout.getAscent();
+                layout.draw(g2D, stageLeftBound + 10, drawYPos);
+                drawYPos += layout.getDescent() + layout.getLeading();
+            }
         }
     }
 }

@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 public class Main {
 
+    public static int widthLimit = 700;
     public static Font firstFolioFont;
     public static BufferedImage oldPaperImage;
     public static HashMap<String, Clip> audioClips = new HashMap<>();

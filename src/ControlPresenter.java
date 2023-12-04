@@ -38,6 +38,8 @@ public class ControlPresenter {
     static final String Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public void draw(Graphics2D g2D, Dimension size, float reservedBottom) {
+        float stageLeftBound  = (float)(size.width - Main.widthLimit) / 2;
+        float stageRightBound = (float)(size.width + Main.widthLimit) / 2;
 
         Font font = Main.firstFolioFont.deriveFont(22.0f);
         g2D.setFont(font);
@@ -84,7 +86,7 @@ public class ControlPresenter {
                 g2D.setStroke(SelectionStoke);
                 g2D.setColor(Main.getFillColor(factor));
                 g2D.drawRect(
-                        (int)(10 + SelectionInset),
+                        (int)(stageLeftBound + 10 + SelectionInset),
                         (int)(midY - IndexBoxSize / 2 + SelectionInset),
                         (int)(IndexBoxSize - SelectionInset * 2),
                         (int)(IndexBoxSize - SelectionInset * 2)
@@ -95,7 +97,12 @@ public class ControlPresenter {
             } else {
                 // draw box
                 g2D.setColor(Main.getFillColor(factor));
-                g2D.fillRect(10, (int)(midY - IndexBoxSize / 2), (int)IndexBoxSize, (int) IndexBoxSize);
+                g2D.fillRect(
+                        (int)(stageLeftBound + 10),
+                        (int)(midY - IndexBoxSize / 2),
+                        (int)IndexBoxSize,
+                        (int)IndexBoxSize
+                );
                 // set index to be bright
                 g2D.setColor(Main.getBgProximateColor(factor));
             }
@@ -103,12 +110,12 @@ public class ControlPresenter {
             // draw index in box
             String index = Alphabet.substring(i, i+1);
             float indexWidth = metrics.stringWidth(index);
-            g2D.drawString(index, 10 + IndexBoxSize / 2.0f - indexWidth / 2.0f,
+            g2D.drawString(index, stageLeftBound + 10 + IndexBoxSize / 2.0f - indexWidth / 2.0f,
                     midY + fontHeight / 2.0f);
 
             // draw option string
             g2D.setColor(Main.getFillColor(factor));
-            g2D.drawString(option, 10 + IndexBoxSize + 10, midY + fontHeight / 2.0f);
+            g2D.drawString(option, stageLeftBound + 10 + IndexBoxSize + 10, midY + fontHeight / 2.0f);
         }
 
         // draw skip
@@ -117,12 +124,12 @@ public class ControlPresenter {
             g2D.setColor(Main.getFillColor(factor));
 
             if (shouldShow) {
-                g2D.fillRect(size.width - 10 - 100, (int)(midY - IndexBoxSize / 2), 100, (int)IndexBoxSize);
+                g2D.fillRect((int)stageRightBound - 10 - 100, (int)(midY - IndexBoxSize / 2), 100, (int)IndexBoxSize);
                 g2D.setColor(Main.getBgProximateColor(factor));
             } else {
                 g2D.setStroke(SelectionStoke);
                 g2D.drawRect(
-                        (int)(size.width - 10 - 100 + SelectionInset),
+                        (int)(stageRightBound - 10 - 100 + SelectionInset),
                         (int)(midY - IndexBoxSize / 2 + SelectionInset),
                         (int)(100 - SelectionInset * 2),
                         (int)(IndexBoxSize - SelectionInset * 2)
@@ -131,7 +138,7 @@ public class ControlPresenter {
 
             String skip = "NEXT";
             float skipWidth = metrics.stringWidth(skip);
-            g2D.drawString("NEXT", size.width - 10 - 50 - skipWidth / 2, midY + fontHeight / 2.0f);
+            g2D.drawString("NEXT", stageRightBound - 10 - 50 - skipWidth / 2, midY + fontHeight / 2.0f);
         }
     }
 }
