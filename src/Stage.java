@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Stage {
-    private TextPresenter textPresenter = new TextPresenter();
-    private ControlPresenter controlPresenter = new ControlPresenter();
-    private AudioPresenter audioPresenter = new AudioPresenter();
+    private final TextPresenter textPresenter = new TextPresenter();
+    private final ControlPresenter controlPresenter = new ControlPresenter();
+    private final AudioPresenter audioPresenter = new AudioPresenter();
 
 
     private final ArrayList<GameEvent> events;
@@ -111,9 +111,6 @@ public class Stage {
     }
 
     public void drawStage(Graphics g, Dimension size) {
-        int midX = size.width / 2;
-        int midY = size.height / 2;
-
         Graphics2D g2D = (Graphics2D)g;
 
         if (Main.oldPaperImage != null) {
