@@ -2,6 +2,10 @@ import java.util.Set;
 
 public class GameContent {
     static void buildGame(GameBuilder builder) {
+        GameContent.buildExampleGame(builder);
+    }
+
+    static void buildExampleGame(GameBuilder builder) {
 
         builder.addText("Hello this is a example text.");
         builder.presentAndWait();

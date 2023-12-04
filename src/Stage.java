@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -6,10 +8,13 @@ public class Stage {
     private final TextPresenter textPresenter = new TextPresenter();
     private final ControlPresenter controlPresenter = new ControlPresenter();
     private final AudioPresenter audioPresenter = new AudioPresenter();
+    private final PollProgressPresenter pollProgressPresenter = new PollProgressPresenter();
+    private PollSystem pollSystem;
 
 
     private final ArrayList<GameEvent> events;
     private final HashMap<String, Integer> markerTable;
+    private Instant pollStartedTime;
 
     private final ArrayList<String> jumpTable = new ArrayList<>();
     private String targetOption = null;
@@ -22,8 +27,55 @@ public class Stage {
         GameBuilder builder = new GameBuilder();
         GameContent.buildGame(builder);
 
+        if (Main.pollMode) {
+            setupPoll();
+        }
+
         events = builder.events;
         markerTable = builder.markerTable;
+    }
+
+    void setupPoll() {
+        pollSystem = new PollSystem(Main.pollAPIKey);
+        pollSystem.createPoll();
+        System.out.println("Poll Created");
+        System.out.println(pollSystem.getURL());
+
+        // close the poll right before the program is closed
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            public void run() {
+                pollSystem.deletePoll();
+                System.out.println("Poll Deleted");
+            }
+        }, "Poll Termination"));
+    }
+
+    void openVote() {
+        pollStartedTime = Instant.now();
+        String[] options = jumpTable.toArray(new String[0]);
+        pollSystem.updatePoll("Choice: ", options, 20);
+        System.out.println("Poll Updated");
+        pollProgressPresenter.showBar();
+    }
+
+    void closeAndCountVote() {
+        int[] result = pollSystem.getVoteResults();
+        pollSystem.closeVoting();
+        // calculate the index with the most vote
+        int maxIndex = -1;
+        int maxValue = -1;
+        if (result.length != jumpTable.size()) {
+            throw new IndexOutOfBoundsException("Invalid vote result");
+        }
+        for (int i = 0; i < result.length; i++) {
+            if (result[i] > maxValue) {
+                maxValue = result[i];
+                maxIndex = i;
+            }
+        }
+        System.out.println("Poll Chosen");
+        choose(maxIndex);
+        pollProgressPresenter.hideBar();
     }
 
     private boolean canProceed() {
@@ -75,6 +127,9 @@ public class Stage {
                         controlPresenter.showOptions();
                         targetOption = null;
                         waitingForUsrInput = true;
+                        if (!jumpTable.isEmpty() && Main.pollMode) {
+                            openVote();
+                        }
                     }
                     if (wait.options.contains(WaitOptions.AudioPlayback)) {
                         waitingForAudioPlayback = true;
@@ -117,10 +172,23 @@ public class Stage {
             g2D.drawImage(Main.oldPaperImage, 0, 0, (int) size.getWidth(), (int) size.getHeight(), null);
         }
 
+        if (Main.pollMode && waitingForUsrInput && !jumpTable.isEmpty()) {
+            Instant currentTime = Instant.now();
+            long timeSinceStart = ChronoUnit.MILLIS.between(pollStartedTime, currentTime);
+
+            float fraction = timeSinceStart / 20_000.0f;
+            pollProgressPresenter.setFraction(fraction);
+
+            if (fraction >= 1) {
+                closeAndCountVote();
+            }
+        }
+
         updateStage();
 
         textPresenter.draw(g2D, size, 180);
         controlPresenter.draw(g2D, size, 180);
+        pollProgressPresenter.draw(g2D, size, 180);
         audioPresenter.update();
     }
 }

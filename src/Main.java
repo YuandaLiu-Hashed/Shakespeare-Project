@@ -19,9 +19,19 @@ public class Main {
     public static Color getFillColor(float alpha) {
         return new Color(0.20f, 0.10f, 0.0f, alpha);
     }
+    public static String pollAPIKey;
+
+    public static Boolean pollMode = false;
 
     public static void main(String[] args) {
         loadResources();
+        if (args.length > 0 && args[0].equals("poll")) {
+            if (pollAPIKey != null) {
+                pollMode = true;
+            } else {
+                System.out.println("Forced to be in no-poll mode. API key not found.");
+            }
+        }
         Frame frame = new Frame();
         frame.setVisible(true);
     }
@@ -72,6 +82,22 @@ public class Main {
                 System.out.println("Unable to load audio file " + fileName);
                 System.out.println(e.toString());
             }
+        }
+
+        try {
+            InputStream is = Main.class.getResourceAsStream("Straw-Poll-API-Key.txt");
+            Scanner s = new Scanner(is);
+            if (!s.hasNext()) {
+                throw new NoSuchFieldException("Unable to find API Key in API key file.");
+            }
+            String line = s.nextLine();
+            if (line.length() != 36) {
+                throw new NoSuchFieldException("Invalid API Key: " + line);
+            }
+            pollAPIKey = line;
+        } catch (Exception e) {
+            System.out.println("Unable to load Straw API Key");
+            System.out.println(e.toString());
         }
     }
 }
