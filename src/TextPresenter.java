@@ -1,7 +1,5 @@
-import javax.swing.text.html.CSS;
 import java.awt.*;
 import java.awt.font.*;
-import java.awt.geom.Rectangle2D;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 import java.util.ArrayList;
@@ -24,18 +22,23 @@ public class TextPresenter {
         float factor = 0;
         ArrayList<TextLayout> layouts = new ArrayList<>();
         float height = 0;
+        float firstLineInset;
 
-        TextElement(String text, Font font, float wrappingWidth, FontRenderContext context) {
+        TextElement(String text, Font font, float wrappingWidth, float firstLineInset, FontRenderContext context) {
             AttributedString styledText = new AttributedString(text);
             styledText.addAttribute(TextAttribute.FONT, font);
             AttributedCharacterIterator itr = styledText.getIterator();
             int endIndex = itr.getEndIndex();
+            this.firstLineInset = firstLineInset;
 
             LineBreakMeasurer measurer = new LineBreakMeasurer(itr, context);
+            boolean isFirstLine = true;
             while (measurer.getPosition() < endIndex) {
-                TextLayout layout = measurer.nextLayout(wrappingWidth);
+                float inset = isFirstLine ? firstLineInset : 0;
+                TextLayout layout = measurer.nextLayout(wrappingWidth - inset);
                 layouts.add(layout);
                 height += layout.getAscent() + layout.getDescent() + layout.getLeading();
+                isFirstLine = false;
             }
         }
 
@@ -69,7 +72,7 @@ public class TextPresenter {
         while (!pendingEvents.isEmpty()) {
             hasNew = true;
             AddTextGameEvent event = pendingEvents.removeFirst();
-            TextElement newTextElement = new TextElement(event.text, font, Main.widthLimit - 20, context);
+            TextElement newTextElement = new TextElement(event.text, font, Main.widthLimit - 20, 50, context);
             yBottom += newTextElement.height;
             newTextElement.setInitialPosition(yBottom);
             elements.add(newTextElement);
@@ -125,10 +128,13 @@ public class TextPresenter {
         for (TextElement element: elements) {
             g2D.setColor(Main.getFillColor(element.factor));
             float drawYPos = size.height + element.yPos - element.height - reservedBottom - 50;
+            boolean isFirstLine = true;
             for (TextLayout layout: element.layouts) {
                 drawYPos += layout.getAscent();
-                layout.draw(g2D, stageLeftBound + 10, drawYPos);
+                float inset = isFirstLine ? element.firstLineInset : 0;
+                layout.draw(g2D, stageLeftBound + 10 + inset, drawYPos);
                 drawYPos += layout.getDescent() + layout.getLeading();
+                isFirstLine = false;
             }
         }
     }
