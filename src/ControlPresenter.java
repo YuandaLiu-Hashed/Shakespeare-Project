@@ -30,6 +30,15 @@ public class ControlPresenter {
         return (shouldShow && factor == 1) || (!shouldShow && factor == 0);
     }
 
+    public String[] getStyledOptions() {
+        String[] styledOptions = new String[options.size()];
+        for (int i = 0; i < options.size(); i++) {
+            String index = Alphabet.substring(i, i+1);
+            styledOptions[i] = "[" + index + "] " + options.get(i);
+        }
+        return styledOptions;
+    }
+
     // Constants
     static final float OptionHeight = 40;
     static final float IndexBoxSize = 38;

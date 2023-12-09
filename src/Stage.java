@@ -52,7 +52,7 @@ public class Stage {
 
     void openVote() {
         pollStartedTime = Instant.now();
-        String[] options = jumpTable.toArray(new String[0]);
+        String[] options = controlPresenter.getStyledOptions();
         pollSystem.updatePoll("Choice: ", options, 20);
         System.out.println("Poll Updated");
         pollProgressPresenter.showBar();
