@@ -45,16 +45,20 @@ public class ControlPresenter {
         g2D.setFont(font);
 
         // animate factor
-        float showRate = 1 / (Panel.FPS * 0.3f); // complete fade in 0.5 seconds
-        float hideRate = 1 / (Panel.FPS * 0.7f); // complete fade in 0.5 seconds
+        float shortRate = 1 / (Panel.FPS * 0.3f); // complete fade in 0.3 seconds
+        float longRate = 1 / (Panel.FPS * 1.2f);  // complete fade in 1.2 seconds
 
         if (shouldShow && factor < 1) {
-            factor += showRate;
+            factor += shortRate;
             if (factor >= 1) factor = 1;
         }
 
         if (!shouldShow && factor > 0) {
-            factor -= hideRate;
+            if (options.isEmpty()) {
+                factor -= shortRate;
+            } else {
+                factor -= longRate;
+            }
             if (factor <= 0) {
                 factor = 0;
                 options.clear();
@@ -71,9 +75,9 @@ public class ControlPresenter {
         for (int i = 0; i < options.size(); i++) {
             float optionFactor;
             if (i == selected) {
-                optionFactor = Math.min(factor * 3, 1);
+                optionFactor = Math.max(Math.min(factor * 3, 1), 0);
             } else {
-                optionFactor = factor;
+                optionFactor = Math.max(Math.min(factor * 3 - 2, 1), 0);
             }
 
             String option = options.get(i);
@@ -84,7 +88,7 @@ public class ControlPresenter {
             if (i == selected) {
                 // draw wire box
                 g2D.setStroke(SelectionStoke);
-                g2D.setColor(Main.getFillColor(factor));
+                g2D.setColor(Main.getFillColor(optionFactor));
                 g2D.drawRect(
                         (int)(stageLeftBound + 10 + SelectionInset),
                         (int)(midY - IndexBoxSize / 2 + SelectionInset),
@@ -93,10 +97,10 @@ public class ControlPresenter {
                 );
 
                 // set index to be dark
-                g2D.setColor(Main.getFillColor(factor));
+                g2D.setColor(Main.getFillColor(optionFactor));
             } else {
                 // draw box
-                g2D.setColor(Main.getFillColor(factor));
+                g2D.setColor(Main.getFillColor(optionFactor));
                 g2D.fillRect(
                         (int)(stageLeftBound + 10),
                         (int)(midY - IndexBoxSize / 2),
@@ -104,7 +108,7 @@ public class ControlPresenter {
                         (int)IndexBoxSize
                 );
                 // set index to be bright
-                g2D.setColor(Main.getBgProximateColor(factor));
+                g2D.setColor(Main.getBgProximateColor(optionFactor));
             }
 
             // draw index in box
@@ -114,7 +118,7 @@ public class ControlPresenter {
                     midY + fontHeight / 2.0f);
 
             // draw option string
-            g2D.setColor(Main.getFillColor(factor));
+            g2D.setColor(Main.getFillColor(optionFactor));
             g2D.drawString(option, stageLeftBound + 10 + IndexBoxSize + 10, midY + fontHeight / 2.0f);
         }
 
