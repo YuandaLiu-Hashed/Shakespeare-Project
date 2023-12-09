@@ -22,7 +22,7 @@ public class Main {
     }
     public static String pollAPIKey;
 
-    public static Boolean pollMode = false;
+    public static boolean pollMode = false;
 
     public static void main(String[] args) {
         loadResources();
