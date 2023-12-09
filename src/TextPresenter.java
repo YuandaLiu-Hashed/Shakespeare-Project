@@ -37,8 +37,6 @@ public class TextPresenter {
                 layouts.add(layout);
                 height += layout.getAscent() + layout.getDescent() + layout.getLeading();
             }
-            GlyphVector vector = font.createGlyphVector(context, text);
-            Rectangle2D rect = vector.getLogicalBounds();
         }
 
         void setInitialPosition(float y) {
