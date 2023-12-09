@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -9,6 +10,8 @@ public class Stage {
     private final ControlPresenter controlPresenter = new ControlPresenter();
     private final AudioPresenter audioPresenter = new AudioPresenter();
     private final PollProgressPresenter pollProgressPresenter = new PollProgressPresenter();
+
+    private final TitlePresenter titlePresenter = new TitlePresenter();
     private PollSystem pollSystem;
 
 
@@ -33,6 +36,11 @@ public class Stage {
 
         events = builder.events;
         markerTable = builder.markerTable;
+
+        // present title screen
+        titlePresenter.show();
+        controlPresenter.showOptions();
+        waitingForUsrInput = true;
     }
 
     void setupPoll() {
@@ -40,6 +48,7 @@ public class Stage {
         pollSystem.createPoll();
         System.out.println("Poll Created");
         System.out.println(pollSystem.getURL());
+        titlePresenter.setQRCode(QRCodeCreator.createQRImage(pollSystem.getURL(), 128));
 
         // close the poll right before the program is closed
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
@@ -82,7 +91,7 @@ public class Stage {
         if (waitingForAudioPlayback && audioPresenter.finishedPlaying()) {
             waitingForAudioPlayback = false;
         }
-        return controlPresenter.completedAnimation() && !waitingForUsrInput && !waitingForAudioPlayback;
+        return controlPresenter.completedAnimation() && titlePresenter.completedAnimation() && !waitingForUsrInput && !waitingForAudioPlayback;
     }
 
     private void updateStage() {
@@ -155,6 +164,7 @@ public class Stage {
         if (!jumpTable.isEmpty()) return;
         controlPresenter.skip();
         waitingForUsrInput = false;
+        titlePresenter.hide();
     }
 
     void choose(int option) {
@@ -189,6 +199,7 @@ public class Stage {
         textPresenter.draw(g2D, size, 180);
         controlPresenter.draw(g2D, size, 180);
         pollProgressPresenter.draw(g2D, size, 180);
+        titlePresenter.draw(g2D, size);
         audioPresenter.update();
     }
 }
