@@ -11,6 +11,7 @@ public class AudioPresenter {
             System.out.println("ERROR: file " + fileName + "doesn't exist");
             return;
         }
+        clip.setFramePosition(0);
         clip.start();
         playingClips.add(clip);
     }
