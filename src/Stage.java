@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Stage {
     private final TextPresenter textPresenter = new TextPresenter();
@@ -13,6 +14,8 @@ public class Stage {
 
     private final TitlePresenter titlePresenter = new TitlePresenter();
     private PollSystem pollSystem;
+
+    private final Random random = new Random();
 
 
     private final ArrayList<GameEvent> events;
@@ -42,6 +45,9 @@ public class Stage {
         titlePresenter.show();
         controlPresenter.showOptions();
         waitingForUsrInput = true;
+
+        // seed random
+         random.setSeed(Instant.now().getEpochSecond() ^ 1023487508768295849L);
     }
 
     void setupPoll() {
@@ -71,20 +77,29 @@ public class Stage {
     void closeAndCountVote() {
         int[] result = pollSystem.getVoteResults();
         pollSystem.closeVoting();
-        // calculate the index with the most vote
-        int maxIndex = -1;
-        int maxValue = -1;
         if (result.length != jumpTable.size()) {
             throw new IndexOutOfBoundsException("Invalid vote result");
         }
+        // calculate the index with the most vote
+        int maxValue = -1;
+        ArrayList<Integer> maxIndices = new ArrayList<>();
         for (int i = 0; i < result.length; i++) {
             if (result[i] > maxValue) {
                 maxValue = result[i];
-                maxIndex = i;
+                maxIndices.clear();
+                maxIndices.add(i);
+            } else if (result[i] == maxValue) {
+                maxIndices.add(i);
             }
         }
         System.out.println("Poll Chosen");
-        choose(maxIndex);
+        int choice;
+        if (maxIndices.size() > 1) {
+            choice = maxIndices.get(random.nextInt(maxIndices.size()));
+        } else {
+            choice = maxIndices.get(0);
+        }
+        choose(choice);
         pollProgressPresenter.hideBar();
     }
 
