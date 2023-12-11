@@ -61,7 +61,8 @@ public class TitlePresenter {
         g2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, factor));
 
         if (qrCode != null) {
-            g2D.drawImage(qrCode, size.width / 2 - 100, size.height / 2 + 20, 200, 200, null);
+            int qrSize = (size.height / 2) - 40;
+            g2D.drawImage(qrCode, size.width / 2 - qrSize / 2, size.height / 2 + 20, qrSize, qrSize, null);
         }
 
         g2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
