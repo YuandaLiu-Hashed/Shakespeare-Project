@@ -24,6 +24,7 @@ public class Stage {
     private int programCounter = 0;
     private boolean waitingForUsrInput = false;
     private boolean waitingForAudioPlayback = false;
+    private float pollTime = 20;
 
     Stage() {
         // build game
@@ -62,7 +63,7 @@ public class Stage {
     void openVote() {
         pollStartedTime = Instant.now();
         String[] options = controlPresenter.getStyledOptions();
-        pollSystem.updatePoll("Choice: ", options, 20);
+        pollSystem.updatePoll("Choice: ", options, (int)pollTime);
         System.out.println("Poll Updated");
         pollProgressPresenter.showBar();
     }
@@ -130,6 +131,12 @@ public class Stage {
                     programCounter = markerTable.get(targetOption);
                     break;
                 }
+                case SetPollTime: {
+                    SetPollTimeGameEvent setPollTimeGameEvent = (SetPollTimeGameEvent)event;
+                    pollTime = setPollTimeGameEvent.pollTime;
+                    programCounter++;
+                    break;
+                }
                 case PresentAndWait: {
                     PresentAndWaitGameEvent wait = (PresentAndWaitGameEvent)event;
                     if (wait.options.contains(WaitOptions.UserInteraction)) {
@@ -186,7 +193,7 @@ public class Stage {
             Instant currentTime = Instant.now();
             long timeSinceStart = ChronoUnit.MILLIS.between(pollStartedTime, currentTime);
 
-            float fraction = timeSinceStart / 20_000.0f;
+            float fraction = timeSinceStart / (pollTime * 1000f);
             pollProgressPresenter.setFraction(fraction);
 
             if (fraction >= 1) {

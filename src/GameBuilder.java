@@ -63,6 +63,11 @@ public class GameBuilder {
         events.add(event);
     }
 
+    public void setPollTime(float pollTime) {
+        GameEvent event = new SetPollTimeGameEvent(pollTime);
+        events.add(event);
+    }
+
     public void addOption(String prompt, String mark) {
         GameEvent event = new AddOptionGameEvent(prompt, mark);
         events.add(event);

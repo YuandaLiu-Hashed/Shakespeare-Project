@@ -8,7 +8,7 @@ abstract class GameEvent {
 }
 
 enum GameEventType {
-    AddText, ClearText, Jump, AddOption, TakeOption, PresentAndWait, End, PlayAudio
+    AddText, ClearText, Jump, AddOption, TakeOption, PresentAndWait, End, PlayAudio, SetPollTime
 }
 
 enum WaitOptions {
@@ -58,6 +58,14 @@ class PlayAudioGameEvent extends GameEvent {
     PlayAudioGameEvent(String fileName) {
         super(GameEventType.PlayAudio);
         this.fileName = fileName;
+    }
+}
+
+class SetPollTimeGameEvent extends GameEvent {
+    final float pollTime;
+    SetPollTimeGameEvent(float pollTime) {
+        super(GameEventType.SetPollTime);
+        this.pollTime = pollTime;
     }
 }
 
