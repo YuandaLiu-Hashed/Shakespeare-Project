@@ -2,13 +2,38 @@ import java.util.Set;
 
 public class GameContent {
     static void buildGame(GameBuilder builder) {
+        builder.mark("START");
 //        GameContent.buildExampleGame(builder);
         buildActualGame(builder);
+        buildEpilogue(builder);
+
         builder.verify();
     }
 
     static void buildActualGame(GameBuilder builder) {
         GameContentScene1.build(builder);
+    }
+
+    static void buildEpilogue(GameBuilder builder) {
+        builder.mark("END");
+        builder.clearText();
+
+        builder.addText("Thanks for Playing");
+        builder.presentAndWait();
+
+        builder.addText("Made by: ");
+        builder.addText("<NAME PLACEHOLDER>");
+        builder.presentAndWait();
+
+        builder.addText("Quit or play again?");
+        builder.addOption("Play again", "START");
+        builder.addOption("Quit", "QUIT");
+        builder.presentAndWait();
+        builder.clearText();
+        builder.takeOption();
+
+        builder.mark("QUIT");
+        builder.endGame();
     }
 
     static void buildExampleGame(GameBuilder builder) {
@@ -38,7 +63,7 @@ public class GameContent {
         builder.mark("A");
         builder.addText("You got ending A");
         builder.presentAndWait();
-        builder.endGame();
+        builder.jumpTo("END");
 
         //----------------------------------------------------------------------
         // Option B
@@ -46,6 +71,6 @@ public class GameContent {
         builder.mark("B");
         builder.addText("You got ending B");
         builder.presentAndWait();
-        builder.endGame();
+        builder.jumpTo("END");
     }
 }
