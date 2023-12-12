@@ -108,7 +108,7 @@ public class Stage {
         if (waitingForAudioPlayback && audioPresenter.finishedPlaying()) {
             waitingForAudioPlayback = false;
         }
-        return controlPresenter.completedAnimation() && titlePresenter.completedAnimation() && !waitingForUsrInput && !waitingForAudioPlayback;
+        return controlPresenter.completedAnimation() && titlePresenter.completedAnimation() && textPresenter.completedAnimation(isFastForward) && !waitingForUsrInput && !waitingForAudioPlayback;
     }
 
     private void updateStage() {

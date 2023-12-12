@@ -48,6 +48,13 @@ public class TextPresenter {
         }
     }
 
+    boolean completedAnimation(boolean fastForward) {
+        if (!elements.isEmpty()) {
+            return Math.abs(elements.get(elements.size() - 1).yPos) <= (fastForward ? 1000f : 30f);
+        }
+        return true;
+    }
+
     void addTextEvent(AddTextGameEvent event) {
         pendingEvents.add(event);
     }
