@@ -59,7 +59,7 @@ public class GameContentScene1 {
         builder.presentAndWait();
         builder.addText("“You say Claudius killed your father? That’s a bold claim to make,” says the gravedigger. “But if you’re looking for rest, you’ve found the right place.” He gestures to the churchyard, full of faded headstones and gloomy mausoleums.");
         builder.presentAndWait();
-        builder.addText("“I suppose… but what man’s grave is this that you’re digging?” asks Hamlet.");
+        builder.addText("“I suppose... but what man’s grave is this that you’re digging?” asks Hamlet.");
         builder.presentAndWait();
         builder.addText("The gravedigger looks down at the dark pit. “No man’s, sir.”");
         builder.presentAndWait();
@@ -79,7 +79,7 @@ public class GameContentScene1 {
         builder.presentAndWait();
         builder.addText("“Yes, my lord,” Horatio replies. They pass several gray headstones, on their route to a thicket at the edge of the graveyard.");
         builder.presentAndWait();
-        builder.addText("“Why, Horatio, I recognize some of these headstones. People I knew in the past… that is Yorick, a jester I remember from my youth. I used to listen to his jokes; many times he would give me piggyback rides, and yet look at him now.” Hamlet’s face falls. “He lies in such a cold, silent place. A man of such warmth deserved better, yet here he lies.”");
+        builder.addText("“Why, Horatio, I recognize some of these headstones. People I knew in the past... that is Yorick, a jester I remember from my youth. I used to listen to his jokes; many times he would give me piggyback rides, and yet look at him now.” Hamlet’s face falls. “He lies in such a cold, silent place. A man of such warmth deserved better, yet here he lies.”");
         builder.presentAndWait();
         builder.addText("“I’m sorry, lord,” says Horatio. “But look, here the funeral party comes!”");
         builder.presentAndWait();
@@ -87,11 +87,11 @@ public class GameContentScene1 {
         builder.presentAndWait();
         builder.addText("The procession arrives, and to his surprise Hamlet recognizes many of the faces in the small crowd. Following the priest is his treacherous uncle Claudius, King of Denmark; his mother, the unfaithful queen Gertrude; and Laertes, sister of Ophelia and son of Polonius, who Hamlet killed.");
         builder.presentAndWait();
-        builder.addText("And the body… Hamlet’s face turns as white as the gravestones around him. “That… is my beloved Ophelia.”");
+        builder.addText("And the body... Hamlet’s face turns as white as the gravestones around him. “That... is my beloved Ophelia.”");
         builder.presentAndWait();
         builder.addText("From afar, Hamlet and Horatio cannot hear the words of the mourners in the pale moonlight. Gertrude says some words, tears streaming down her face. The casket is lowered into the pit.");
         builder.presentAndWait();
-        builder.addText("Not all is right. Laertes seems to be arguing with the priest over something. “His emotions must be high… after all Ophelia was his sister,” says Horatio. “Poor man.” Laertes does not stop arguing. He raises his fists, begins to yell.");
+        builder.addText("Not all is right. Laertes seems to be arguing with the priest over something. “His emotions must be high... after all Ophelia was his sister,” says Horatio. “Poor man.” Laertes does not stop arguing. He raises his fists, begins to yell.");
         builder.presentAndWait();
         builder.addText("Suddenly, tears streak down his face. With a cry, Laertes throws himself into the pit onto the coffin, hugging his dead sister’s casket!");
         builder.presentAndWait();
@@ -116,7 +116,7 @@ public class GameContentScene1 {
         builder.presentAndWait();
         builder.addText("“You say Claudius killed your father? That’s a bold claim to make,” says the gravedigger. “But if you’re looking for rest, you’ve found the right place.” He gestures to the churchyard, full of faded headstones and gloomy mausoleums.");
         builder.presentAndWait();
-        builder.addText("“I suppose… but what man’s grave is this that you’re digging?” asks Hamlet.");
+        builder.addText("“I suppose... but what man’s grave is this that you’re digging?” asks Hamlet.");
         builder.presentAndWait();
         builder.addText("The gravedigger looks down at the dark pit. “No man’s, sir.”");
         builder.presentAndWait();
@@ -136,7 +136,7 @@ public class GameContentScene1 {
         builder.presentAndWait();
         builder.addText("“Yes, my lord,” Horatio replies. They pass several gray headstones, on their route to a thicket at the edge of the graveyard.");
         builder.presentAndWait();
-        builder.addText("“Why, Horatio, I recognize some of these headstones. People I knew in the past… that is Yorick, a jester I remember from my youth. I used to listen to his jokes; many times he would give me piggyback rides, and yet look at him now.” Hamlet’s face falls. “He lies in such a cold, silent place. A man of such warmth deserved better, yet here he lies.”");
+        builder.addText("“Why, Horatio, I recognize some of these headstones. People I knew in the past... that is Yorick, a jester I remember from my youth. I used to listen to his jokes; many times he would give me piggyback rides, and yet look at him now.” Hamlet’s face falls. “He lies in such a cold, silent place. A man of such warmth deserved better, yet here he lies.”");
         builder.presentAndWait();
         builder.addText("“I’m sorry, lord,” says Horatio. “But look, here the funeral party comes!”");
         builder.presentAndWait();
@@ -144,17 +144,17 @@ public class GameContentScene1 {
         builder.presentAndWait();
         builder.addText("The procession arrives, and to his surprise Hamlet recognizes many of the faces in the small crowd. Following the priest is his treacherous uncle Claudius, King of Denmark; his mother, the unfaithful queen Gertrude; and Laertes, sister of Ophelia and son of Polonius, who Hamlet killed.");
         builder.presentAndWait();
-        builder.addText("And the body… Hamlet’s face turns as white as the gravestones around him. “That… is my beloved Ophelia.”");
+        builder.addText("And the body... Hamlet’s face turns as white as the gravestones around him. “That... is my beloved Ophelia.”");
         builder.presentAndWait();
         builder.addText("From afar, Hamlet and Horatio cannot hear the words of the mourners in the pale moonlight. Gertrude says some words, tears streaming down her face. The casket is lowered into the pit.");
         builder.presentAndWait();
-        builder.addText("Not all is right. Laertes seems to be arguing with the priest over something. “His emotions must be high… after all Ophelia was his sister,” says Horatio. “Poor man.” Laertes does not stop arguing. He raises his fists, begins to yell.");
+        builder.addText("Not all is right. Laertes seems to be arguing with the priest over something. “His emotions must be high... after all Ophelia was his sister,” says Horatio. “Poor man.” Laertes does not stop arguing. He raises his fists, begins to yell.");
         builder.presentAndWait();
         builder.addText("Suddenly, tears streak down his face. With a cry, Laertes throws himself into the pit onto the coffin, hugging his dead sister’s casket!");
         builder.presentAndWait();
         builder.addText("Hamlet’s face goes red. “What is he doing? That’s completely inappropriate; I should set him right for being so wild at his own sister’s funeral!”");
         builder.presentAndWait();
-        builder.addText("Horatio puts a hand on his shoulder. “But lord… we can’t hear them. We don’t know the whole story. Let’s wait a while and see what happens.”");
+        builder.addText("Horatio puts a hand on his shoulder. “But lord... we can’t hear them. We don’t know the whole story. Let’s wait a while and see what happens.”");
         builder.presentAndWait();
 
         builder.addOption("Confront Laertes over his behavior", "S1.4");
@@ -171,11 +171,11 @@ public class GameContentScene1 {
         builder.presentAndWait();
         builder.addText("The mourning party hears his outburst and looks over at the bushes where Horatio and Hamlet are hidden. Laertes, though, seems not to notice. As Hamlet pushes his way out of the bushes, he does not look up. He is too miserable.");
         builder.presentAndWait();
-        builder.addText("“My darling sister…” Laertes sobs, clinging to Ophelia’s casket. “Triple woe smite the cursed head of the man that drove her to her death! Oh, bury me with her!”");
+        builder.addText("“My darling sister...” Laertes sobs, clinging to Ophelia’s casket. “Triple woe smite the cursed head of the man that drove her to her death! Oh, bury me with her!”");
         builder.presentAndWait();
         builder.addText("The others’ surprised eyes are on Prince Hamlet as he strides over and glares down into the grave at Laertes. He clears his throat. “Who is it whose grief and sorrow are so deep that the great stars and planets above know his pain? This is I, Hamlet the Dane!”");
         builder.presentAndWait();
-        builder.addText("Laertes snaps from his sister’s coffin, seeing Hamlet for the first time. “You… you did this!” His eyes are red from crying. “The devil take your soul!”");
+        builder.addText("Laertes snaps from his sister’s coffin, seeing Hamlet for the first time. “You... you did this!” His eyes are red from crying. “The devil take your soul!”");
         builder.presentAndWait();
         builder.addText("Hamlet snarls and leaps at him. He lands on Laertes and smacks his fist into his chest. Laertes reels, but grabs Hamlet and punches him in the face. The two grapple in the grave before the astonished onlookers.");
         builder.presentAndWait();
@@ -199,17 +199,17 @@ public class GameContentScene1 {
         //----------------------------------------------------------------------
         builder.mark("S1.5");
 
-        builder.addText("“I’ll wait and see, then,” Hamlet huffs. “But Ophelia’s memory is disrespected by this outburst…”");
+        builder.addText("“I’ll wait and see, then,” Hamlet huffs. “But Ophelia’s memory is disrespected by this outburst...”");
         builder.presentAndWait();
         builder.addText("Hamlet and Horatio hold where they are in the bushes and watch further. Focusing, they begin to hear the faint words of the mourning party.");
         builder.presentAndWait();
-        builder.addText("“My darling sister…” Laertes sobs, clinging to Ophelia’s casket. “Triple woe smite the cursed head of the man that drove her to her death! Oh, bury me with her!”");
+        builder.addText("“My darling sister...” Laertes sobs, clinging to Ophelia’s casket. “Triple woe smite the cursed head of the man that drove her to her death! Oh, bury me with her!”");
         builder.presentAndWait();
         builder.addText("The rest of the party looks on somberly at this obsequious show of sorrow. The priest at the head of the group shifts uncomfortably. Laertes, still in the grave, brings himself up to one knee and wipes tears away.");
         builder.presentAndWait();
         builder.addText("“Can no more be done?” he asks. He does not look away from Ophelia’s casket, but his audience is clear.”");
         builder.presentAndWait();
-        builder.addText("The priest clears his throat. “Laertes, sir, we’ve discussed this. It would be improper to hold a full ceremony with flowers and requiems considering the… unnatural death your sister came to.”");
+        builder.addText("The priest clears his throat. “Laertes, sir, we’ve discussed this. It would be improper to hold a full ceremony with flowers and requiems considering the... unnatural death your sister came to.”");
         builder.presentAndWait();
         builder.addText("Laertes does not look up. He sighs from deep in his soul, taking in his sister’s absence and the darkness of the night.");
         builder.presentAndWait();
@@ -219,13 +219,13 @@ public class GameContentScene1 {
         builder.presentAndWait();
         builder.addText("Queen Gertrude helps Laertes out of the grave and helps him away. The mourning party exits silently. Hamlet and Horatio exchange glances.");
         builder.presentAndWait();
-        builder.addText("“So Laertes wanted a proper ceremony for Ophelia…” Horatio says at last. “It seems he only wanted her to get her proper dues.”");
+        builder.addText("“So Laertes wanted a proper ceremony for Ophelia...” Horatio says at last. “It seems he only wanted her to get her proper dues.”");
         builder.presentAndWait();
         builder.addText("“And how he went about showing it!” Hamlet grunts. “Come, good Horatio. Let us get some rest. Tomorrow we have a real funeral to attend.”");
         builder.presentAndWait();
         builder.addText("“You intend to attend, lord?”");
         builder.presentAndWait();
-        builder.addText("“I most certainly do. But we will have to be sneaky, Horatio. Listen, this is what we must do…”");
+        builder.addText("“I most certainly do. But we will have to be sneaky, Horatio. Listen, this is what we must do...”");
         builder.presentAndWait();
 
         builder.addText("<Unimplemented Sneaky Hamlet scenario 1>");
