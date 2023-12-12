@@ -228,8 +228,7 @@ public class GameContentScene1 {
         builder.addText("“I most certainly do. But we will have to be sneaky, Horatio. Listen, this is what we must do...”");
         builder.presentAndWait();
 
-        builder.addText("<Unimplemented Sneaky Hamlet scenario 1>");
-        builder.presentAndWait();
-        builder.endGame();
+        builder.clearText();
+        builder.jumpTo("S2SH.1"); // Sneaky Hamlet Scenario Mark 1
     }
 }
