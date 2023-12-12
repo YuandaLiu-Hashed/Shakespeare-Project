@@ -16,6 +16,13 @@ public class AudioPresenter {
         playingClips.add(clip);
     }
 
+    void stopAllAudio() {
+        for (Clip clip: playingClips) {
+            clip.stop();
+        }
+        playingClips.clear();
+    }
+
     boolean finishedPlaying() {
         return playingClips.isEmpty();
     }

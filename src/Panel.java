@@ -60,6 +60,9 @@ public class Panel extends JPanel implements Runnable, KeyListener {
         if (e.getKeyChar() == '\n') {
             stage.chooseSkip();
         }
+        if (e.getKeyChar() == 'X') {
+            stage.chooseFastForward();
+        }
     }
 
     @Override

@@ -28,6 +28,7 @@ public class Stage {
     private boolean waitingForUsrInput = false;
     private boolean waitingForAudioPlayback = false;
     private float pollTime = 20;
+    private boolean isFastForward = false;
 
     Stage() {
         // build game
@@ -127,6 +128,7 @@ public class Stage {
                 }
                 case AddOption: {
                     AddOptionGameEvent opt = (AddOptionGameEvent)event;
+                    isFastForward = false;
                     controlPresenter.addOption(opt.prompt);
                     jumpTable.add(opt.mark);
                     targetOption = null;
@@ -154,6 +156,13 @@ public class Stage {
                 }
                 case PresentAndWait: {
                     PresentAndWaitGameEvent wait = (PresentAndWaitGameEvent)event;
+                    if (isFastForward) {
+                        programCounter++;
+                        if (wait.options.contains(WaitOptions.AudioPlayback)) {
+                            audioPresenter.stopAllAudio();
+                        }
+                        return;
+                    }
                     if (wait.options.contains(WaitOptions.UserInteraction)) {
                         controlPresenter.showOptions();
                         targetOption = null;
@@ -180,6 +189,14 @@ public class Stage {
                 }
             }
         }
+    }
+
+    void chooseFastForward() {
+        if (!jumpTable.isEmpty()) return;
+        waitingForUsrInput = false;
+        controlPresenter.skip();
+        titlePresenter.hide();
+        isFastForward = true;
     }
 
     void chooseSkip() {
