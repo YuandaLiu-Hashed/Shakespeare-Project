@@ -2,7 +2,13 @@ import java.util.Set;
 
 public class GameContent {
     static void buildGame(GameBuilder builder) {
-        GameContent.buildExampleGame(builder);
+//        GameContent.buildExampleGame(builder);
+        buildActualGame(builder);
+        builder.verify();
+    }
+
+    static void buildActualGame(GameBuilder builder) {
+        GameContentScene1.build(builder);
     }
 
     static void buildExampleGame(GameBuilder builder) {
@@ -18,8 +24,9 @@ public class GameContent {
         builder.addText("This is a example choice:");
         builder.addOption("Option A", "A");
         builder.addOption("Option B", "B");
-        builder.playAudio("dummy.wav");
+        builder.playAudio("Vote_A_21s_Export.wav");
 
+        builder.setPollTime(21);
         builder.presentAndWait();
 
         builder.clearText();
@@ -40,7 +47,5 @@ public class GameContent {
         builder.addText("You got ending B");
         builder.presentAndWait();
         builder.endGame();
-
-        builder.verify();
     }
 }
