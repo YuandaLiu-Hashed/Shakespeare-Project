@@ -47,7 +47,7 @@ public class Stage {
         waitingForUsrInput = true;
 
         // seed random
-         random.setSeed(Instant.now().getEpochSecond() ^ 1023487508768295849L);
+         random.setSeed(System.currentTimeMillis() * 131071L + 67280421310721L);
     }
 
     void setupPoll() {
