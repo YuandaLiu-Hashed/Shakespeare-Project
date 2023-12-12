@@ -101,7 +101,7 @@ public class TextPresenter {
         // Set all out of bound to exit
         float space = size.height - 100 - reservedBottom;
         for (TextElement element: elements) {
-            if (-element.yPos > space) {
+            if (-(element.yPos - element.height / 2) > space) {
                 element.stage = PresentationStage.exiting;
             }
         }
@@ -134,7 +134,7 @@ public class TextPresenter {
         }
 
         // Remove element that have exited
-        elements.removeIf(e -> e.stage == PresentationStage.exited);
+        elements.removeIf(e -> e.stage == PresentationStage.exited || -e.yPos > size.height - reservedBottom);
 
         // Draw Text
         for (TextElement element: elements) {
@@ -143,8 +143,10 @@ public class TextPresenter {
             boolean isFirstLine = true;
             for (TextLayout layout: element.layouts) {
                 drawYPos += layout.getAscent();
-                float inset = isFirstLine ? element.firstLineInset : 0;
-                layout.draw(g2D, stageLeftBound + 10 + inset, drawYPos);
+                if (drawYPos > 0 && drawYPos < size.height + 50) {
+                    float inset = isFirstLine ? element.firstLineInset : 0;
+                    layout.draw(g2D, stageLeftBound + 10 + inset, drawYPos);
+                }
                 drawYPos += layout.getDescent() + layout.getLeading();
                 isFirstLine = false;
             }
