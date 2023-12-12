@@ -68,6 +68,10 @@ public class TextPresenter {
 
         // Place all new elements to the bottom of the existing elements
         float yBottom = 0;
+        float actualOffset = 0;
+        if (!elements.isEmpty()) {
+            actualOffset = elements.get(elements.size() - 1).yPos;
+        }
         boolean hasNew = false;
         while (!pendingEvents.isEmpty()) {
             hasNew = true;
@@ -75,6 +79,7 @@ public class TextPresenter {
             TextElement newTextElement = new TextElement(event.text, font, Main.widthLimit - 20, 50, context);
             yBottom += newTextElement.height;
             newTextElement.setInitialPosition(yBottom);
+            newTextElement.yPos = yBottom + actualOffset;
             elements.add(newTextElement);
         }
 
