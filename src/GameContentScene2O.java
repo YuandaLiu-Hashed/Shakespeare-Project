@@ -628,7 +628,7 @@ public class GameContentScene2O {
         builder.presentAndWait();
         builder.addText("Claudius, turning back to her, says “You are certainly welcome to have a drink, there was just something ‘off’ with that cup in particular.”");
         builder.presentAndWait();
-        builder.addText("Getrude, even more confused, asks him a question, one that deeply worries Claudius.");
+        builder.addText("Gertrude, even more confused, asks him a question, one that deeply worries Claudius.");
         builder.presentAndWait();
         builder.addText("“You have seemed to be a big supporter of this fight, and even when Laertes is cheating, you seem to condone it. Something very strange is happening, and surely you can inform me as to what it is.”");
         builder.presentAndWait();
