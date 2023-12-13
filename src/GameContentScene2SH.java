@@ -39,7 +39,7 @@ public class GameContentScene2SH {
         builder.presentAndWait();
         builder.addText("“So be it, prince Hamlet. But I would rest easier if we had more time.” Horatio hesitantly ascends the tree and climbs over the crowd to the large branch that hangs over Claudius’s head. Hamlet returns to the crowd to watch and sneaks his way toward the front to witness what will happen.");
         builder.presentAndWait();
-        builder.addText("The branch is thick. Claudius will certainly die when it falls on him, but it also presents a problem to chop it down – Horatio finds that the sword is not an ideal implement for doing so. Horatio struggles for a moment before finding a good way to cut it. He goes slowly and carefully, so that he is not heard over the sound of the funeral chants and murmurs of the crowd, and those who do hear him assume that the chopping of his sword is coming from work in the town, or perhaps an out-of-season woodpecker.");
+        builder.addText("The branch is thick. Claudius will certainly die when it falls on him, but it also presents a problem to chop it down - Horatio finds that the sword is not an ideal implement for doing so. Horatio struggles for a moment before finding a good way to cut it. He goes slowly and carefully, so that he is not heard over the sound of the funeral chants and murmurs of the crowd, and those who do hear him assume that the chopping of his sword is coming from work in the town, or perhaps an out-of-season woodpecker.");
         builder.presentAndWait();
         builder.addText("It is long going, and soon the funeral wraps up. Hamlet grows impatient and looks up at Horatio in the tree. The mourners will be leaving soon, and it will all be for naught...");
         builder.presentAndWait();
@@ -135,7 +135,7 @@ public class GameContentScene2SH {
         builder.presentAndWait();
         builder.addText("However, when he reaches his chamber, Claudius finds himself in for a nasty shock: standing at the foot of his bed, with one crooked finger outstretched, pointing directly at him, is the spitting image of his dead brother, old king Hamlet!");
         builder.presentAndWait();
-        builder.addText("“What– what is the meaning of this?! What phantom are you!” cries Claudius. “Begone, begone! You are dead!” and yet the ghost does not move. It says nothing.");
+        builder.addText("“What- what is the meaning of this?! What phantom are you!” cries Claudius. “Begone, begone! You are dead!” and yet the ghost does not move. It says nothing.");
         builder.presentAndWait();
         builder.addText("Gertrude comes rushing up at the sound of Claudius yelling. “What is it, husband? What makes you yell so?”");
         builder.presentAndWait();
@@ -156,9 +156,9 @@ public class GameContentScene2SH {
         //----------------------------------------------------------------------
         builder.mark("S2SH.6");
 
-        builder.addText("“... our best choice is to bury it in an empty grave. After all, who would look for a dead body in a graveyard? Quickly, Horatio,” says Hamlet. “We do not have the time to dig a hole ourselves – we must find one that has already been dug, but not yet filled in.”");
+        builder.addText("“... our best choice is to bury it in an empty grave. After all, who would look for a dead body in a graveyard? Quickly, Horatio,” says Hamlet. “We do not have the time to dig a hole ourselves - we must find one that has already been dug, but not yet filled in.”");
         builder.presentAndWait();
-        builder.addText("The two haul Claudius’s body through the cemetery, looking for suitable graves. Unfortunately, none are recent – the graveyard is old, and most of the graves were filled in by people who themselves later had graves dug for them. The day grows late.");
+        builder.addText("The two haul Claudius’s body through the cemetery, looking for suitable graves. Unfortunately, none are recent - the graveyard is old, and most of the graves were filled in by people who themselves later had graves dug for them. The day grows late.");
         builder.presentAndWait();
         builder.addText("“It may not be possible to dispose of the body in such a way, lord,” pants Horatio. He shivers in the chilly air of the late afternoon. “Perhaps there are other options..?”");
         builder.presentAndWait();
@@ -174,7 +174,7 @@ public class GameContentScene2SH {
         builder.presentAndWait();
         builder.addText("There is no reply. Hamlet shuts his mouth and resists the urge to curse. He turns slowly and finds Laertes standing over him. Laertes’s eyes, red from the exhaustion of tears, bore into him.");
         builder.presentAndWait();
-        builder.addText("“Oh... Laertes.” Hamlet chuckles nervously. “I am sorry for the pain I have caused you. I have done you many a wrong, and truly, only I am at fault for them–”");
+        builder.addText("“Oh... Laertes.” Hamlet chuckles nervously. “I am sorry for the pain I have caused you. I have done you many a wrong, and truly, only I am at fault for them-”");
         builder.presentAndWait();
         builder.addText("Laertes does not respond. He is quick and his mouth is set tight as he runs Hamlet through with his sword in lieu of a response.");
         builder.presentAndWait();
@@ -192,7 +192,7 @@ public class GameContentScene2SH {
         //----------------------------------------------------------------------
         builder.mark("S2SH.7");
         
-        builder.addText("“...our best option is to stow Claudius in a tree. See how the trees of the graveyard are tall and broad – and one would think to look for a dead body in the graves of a cemetery, not in the trees above.” Hamlet taps his chin, thinking. “We will need to find the most gnarled old tree, so that we may climb it as easily as possible, and rope.”");
+        builder.addText("“...our best option is to stow Claudius in a tree. See how the trees of the graveyard are tall and broad - and one would think to look for a dead body in the graves of a cemetery, not in the trees above.” Hamlet taps his chin, thinking. “We will need to find the most gnarled old tree, so that we may climb it as easily as possible, and rope.”");
         builder.presentAndWait();
         builder.addText("Horatio blinks. “You really mean to hide Claudius’s body up in a tree, where anyone can see it?”");
         builder.presentAndWait();
@@ -216,13 +216,13 @@ public class GameContentScene2SH {
         builder.presentAndWait();
         builder.addText("“Yes, mother, here I am! And glad am I to be back home, in Denmark?” He looks around with a devious look in his eyes. “But where, pray, is my uncle, king Claudius? And where is my dearest Ophelia?”");
         builder.presentAndWait();
-        builder.addText("Gertrude frowns. “Oh, Hamlet. Ophelia is dead... she drowned in the river. I can tell you more later, but we just celebrated her funeral. Laertes and I were just discussing where the king is – we have not seen him since then.”");
+        builder.addText("Gertrude frowns. “Oh, Hamlet. Ophelia is dead... she drowned in the river. I can tell you more later, but we just celebrated her funeral. Laertes and I were just discussing where the king is - we have not seen him since then.”");
         builder.presentAndWait();
         builder.addText("“That is most troubling. But fear not, for I, Hamlet, am most willing to help.” He bows grandiosely. “I shall arrange for a party of guards from the castle to search the town for him. We shall find him, mother, worry not.”");
         builder.presentAndWait();
         builder.addText("“Oh, Hamlet.” She smiles and embraces him. Laertes’s frosty demeanor melts slightly at the sight. “It is good of you to take charge. We shall find him soon enough.”");
         builder.presentAndWait();
-        builder.addText("Predictably, Claudius is not found – Hamlet is keen enough to redirect the search parties away from Claudius’s body’s true location. With the king missing, Hamlet declares himself prince regent and begins a long and glorious rule over Denmark free from threats, as his enemies mysteriously disappear before they can act against him.");
+        builder.addText("Predictably, Claudius is not found - Hamlet is keen enough to redirect the search parties away from Claudius’s body’s true location. With the king missing, Hamlet declares himself prince regent and begins a long and glorious rule over Denmark free from threats, as his enemies mysteriously disappear before they can act against him.");
         builder.presentAndWait();
         builder.addText("Claudius’s body is eaten by birds before the week is up.");
         builder.presentAndWait();
@@ -247,9 +247,9 @@ public class GameContentScene2SH {
         builder.presentAndWait();
         builder.addText("Fortinbras sighs. “No wonder Denmark has seen such hard times of late. King Claudius has gone mad... the danes can no longer be trusted to manage Denmark. From this day forward shall I take the throne of Denmark in the name of Norway.”");
         builder.presentAndWait();
-        builder.addText("Gertrude steps forward, shocked. “But Fortinbras, Claudius has never acted so until recently– surely there is no need to take our Denmark! there must be a reasonable explanation for this!”");
+        builder.addText("Gertrude steps forward, shocked. “But Fortinbras, Claudius has never acted so until recently- surely there is no need to take our Denmark! there must be a reasonable explanation for this!”");
         builder.presentAndWait();
-        builder.addText("Fortinbras avoids her gaze. His soldiers fill the room and raise the Norwegian flag and royal coat of arms. “Perhaps, Gertrude, there is a reasonable explanation for Claudius’s madness. But madness is not reasonable– the king of Denmark cannot excuse his own instability to hoard the throne.”");
+        builder.addText("Fortinbras avoids her gaze. His soldiers fill the room and raise the Norwegian flag and royal coat of arms. “Perhaps, Gertrude, there is a reasonable explanation for Claudius’s madness. But madness is not reasonable- the king of Denmark cannot excuse his own instability to hoard the throne.”");
         builder.presentAndWait();
 
         builder.jumpTo("END");
