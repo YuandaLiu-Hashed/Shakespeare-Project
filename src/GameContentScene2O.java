@@ -986,7 +986,7 @@ public class GameContentScene2O {
 
         builder.addText("He looks around the table and stands. All eyes are on him as he says. “I feel a little faint, and shall retire to bed early. Some light!” He claps. Servants with candles come over to guide him to his room. “Away!”");
         builder.presentAndWait();
-        builder.addText("He stumbles off to his room while the others look at each other, confused. Claudius has never acted like this before... only Hamlet, smiling with unshakeable good cheer, brings the mood back to the table by relating a story from his voyage to England. He watches Claudius leave with a twinkle in his eye. He got to him.");
+        builder.addText("He stumbles off to his room while the others look at each other, confused. Claudius has never acted like this before... only Hamlet, smiling with unshakable good cheer, brings the mood back to the table by relating a story from his voyage to England. He watches Claudius leave with a twinkle in his eye. He got to him.");
         builder.presentAndWait();
         builder.addText("The next day, Claudius is nowhere to be found around the castle. In his room, Gertrude finds a note that shocks everyone in the kingdom: a confession that Claudius killed his brother, old king Hamlet, in order to take the throne. A postscript attached to the note names young prince Hamlet as Claudius’s rightful chosen successor.");
         builder.presentAndWait();
@@ -1004,7 +1004,7 @@ public class GameContentScene2O {
         //----------------------------------------------------------------------
         builder.mark("S2O.40");
 
-        builder.addText("As the meal continues, the idea that he must kill the prince grows more and more unshakeable, as he watches Hamlet’s confident, easy demeanor. “I must take things into my own hands,” Claudius whispers to himself. “No one else can be trusted- not while the prince has their confidence!”");
+        builder.addText("As the meal continues, the idea that he must kill the prince grows more and more unshakable, as he watches Hamlet’s confident, easy demeanor. “I must take things into my own hands,” Claudius whispers to himself. “No one else can be trusted- not while the prince has their confidence!”");
         builder.presentAndWait();
         builder.addText("The next day, Claudius orders Osric, the servant, to bring a sword to the throne room and stow it behind the throne. He then sends Osric with a message to Hamlet declaring that Claudius is to meet Hamlet alone in the throne room. Osric bows and dutifully carries out his instructions, not putting together what it means for the prince.");
         builder.presentAndWait();
@@ -1566,7 +1566,7 @@ public class GameContentScene2O {
         builder.presentAndWait();
         builder.addText("“But my king, we cannot make it to the town! We are under attack! In his frenzy to escape, Laertes stumbled upon a delegation of foreign soldiers. He has killed Prince Fortinbras of Norway, and now his troops besiege the castle!”");
         builder.presentAndWait();
-        builder.addText("Hamlet turns pale. “So this is Laertes’s revenge in action... he hardly knows what he has done. Now, in my first moments as king, must I go to war with Norway!” He wanders back to his throne depressedly. “The struggle never ends.”");
+        builder.addText("Hamlet turns pale. “So this is Laertes’s revenge in action... he hardly knows what he has done. Now, in my first moments as king, must I go to war with Norway!” He wanders back to his throne depressingly. “The struggle never ends.”");
         builder.presentAndWait();
         builder.addText("Thus did Norway and Denmark engage in long and bloody war, and King Hamlet II reigned over more difficult times than he ever did deserve.");
         builder.presentAndWait();
