@@ -68,7 +68,7 @@ public class TextPresenter {
     public void draw(Graphics2D g2D, Dimension size, float reservedBottom) {
         float stageLeftBound = (float)(size.width - Main.widthLimit) / 2;
 
-        Font font = Main.firstFolioFont.deriveFont(28.0f);
+        Font font = Main.vollkornMediumFont.deriveFont(28.0f);
         g2D.setFont(font);
 
         FontRenderContext context = g2D.getFontRenderContext();

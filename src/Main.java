@@ -12,6 +12,7 @@ public class Main {
 
     public static int widthLimit = 700;
     public static Font firstFolioFont;
+    public static Font vollkornMediumFont;
     public static BufferedImage oldPaperImage;
     public static HashMap<String, Clip> audioClips = new HashMap<>();
     public static Color getBgProximateColor(float alpha) {
@@ -45,6 +46,16 @@ public class Main {
             System.out.println("Unable to load font");
             System.out.println(e.toString());
             firstFolioFont = new Font("Courier", Font.PLAIN, 20);;
+        }
+
+        try {
+            InputStream is = Main.class.getResourceAsStream("Vollkorn-Medium.ttf");
+            vollkornMediumFont = Font.createFont(Font.TRUETYPE_FONT, is);
+
+        } catch (Exception e) {
+            System.out.println("Unable to load font");
+            System.out.println(e.toString());
+            vollkornMediumFont = new Font("Courier", Font.PLAIN, 20);;
         }
 
         try {
