@@ -1,10 +1,8 @@
 import java.awt.*;
+import java.util.*;
 import java.awt.image.BufferedImage;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
 
 public class Stage {
     private final TextPresenter textPresenter = new TextPresenter();
@@ -46,9 +44,6 @@ public class Stage {
         titlePresenter.show();
         controlPresenter.showOptions();
         waitingForUsrInput = true;
-
-        // seed random
-         random.setSeed(System.currentTimeMillis() * 131071L + 67280421310721L);
     }
 
     void setupPoll() {
@@ -76,29 +71,25 @@ public class Stage {
     }
 
     void closeAndCountVote() {
-        int[] result = pollSystem.getVoteResults();
+        Integer[] result = pollSystem.getVoteResults();
         pollSystem.closeVoting();
         if (result.length != jumpTable.size()) {
             throw new IndexOutOfBoundsException("Invalid vote result");
         }
         // calculate the index with the most vote
-        int maxValue = -1;
+        int maxValue = Collections.max(Arrays.asList(result));
         ArrayList<Integer> maxIndices = new ArrayList<>();
         for (int i = 0; i < result.length; i++) {
-            if (result[i] > maxValue) {
-                maxValue = result[i];
-                maxIndices.clear();
-                maxIndices.add(i);
-            } else if (result[i] == maxValue) {
+            if (result[i] == maxValue) {
                 maxIndices.add(i);
             }
         }
         System.out.println("Poll Chosen");
-        int choice;
+        int choice = maxIndices.get(0);
         if (maxIndices.size() > 1) {
-            choice = maxIndices.get(random.nextInt(maxIndices.size()));
-        } else {
-            choice = maxIndices.get(0);
+            // A tie has occurred. A random max index is chosen
+            int randomInt = random.nextInt(maxIndices.size());
+            choice = maxIndices.get(randomInt);
         }
         choose(choice);
         pollProgressPresenter.hideBar();

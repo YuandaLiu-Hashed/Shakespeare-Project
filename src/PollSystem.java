@@ -13,7 +13,7 @@ public class PollSystem {
     private String[] choices;
     private String[] pollOptionsIDs; // necessary for updating the poll
 
-    private int[] voteResults;
+    private Integer[] voteResults;
     private int expectedVoteCount;
 
     private long deadline; // unix epoch time
@@ -89,7 +89,7 @@ public class PollSystem {
     }
 
 
-    public int[] getVoteResults() {
+    public Integer[] getVoteResults() {
         // Sending GET Request to the API
         HttpResponse<String> response;
         HttpRequest request = HttpRequest.newBuilder()
@@ -101,10 +101,10 @@ public class PollSystem {
             response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
         } catch (Exception e) {
             System.out.println("Error occured in getVoteResults method:\n" + e.toString());
-            return new int[] {-1}; // returns an array containing -1
+            return new Integer[] {-1}; // returns an array containing -1
         }
 
-        voteResults = new int[choices.length];
+        voteResults = new Integer[choices.length];
 
         // Parsing through the response body to get the vote counts
         String responseBodySubstring = response.body().split("\"poll_options\":")[1];
@@ -145,7 +145,7 @@ public class PollSystem {
         for (int i = 1; i < choices.length; i++) {
             requestBody += String.format(", {\"value\": \"%s\"}", choices[i]);
         }
-        requestBody += "], \"poll_config\": {\"is_private\": true, \"allow_comments\": false, \"allow_indeterminate\": false, \"allow_other_option\": false, \"duplication_checking\": \"ip\", \"allow_vpn_users\": true, \"edit_vote_permissions\": \"nobody\", \"hide_participants\": true, \"is_multiple_choice\": false, \"number_of_winners\": 1, \"randomize_options\": false, \"require_voter_names\": false, \"results_visibility\": \"hidden\"}, \"poll_meta\": {\"timezone\": \"EST\"}, \"type\": \"multiple_choice\"}";
+        requestBody += "], \"poll_config\": {\"is_private\": true, \"allow_comments\": false, \"allow_indeterminate\": false, \"allow_other_option\": false, \"duplication_checking\": \"ip\", \"allow_vpn_users\": true, \"edit_vote_permissions\": \"nobody\", \"hide_participants\": true, \"is_multiple_choice\": false, \"number_of_winners\": 1, \"randomize_options\": false, \"require_voter_names\": false, \"results_visibility\": \"hidden\"}, \"poll_meta\": {\"timezone\": \"EST\"}, \"theme\": {\"id\": \"Qe2na0WMyBO\"}, \"type\": \"multiple_choice\"}";
 
         return requestBody;
     }
@@ -194,7 +194,7 @@ public class PollSystem {
         }
 
         // The list "remove_poll_options" contains ids of choices that need to be removed, which is all the options from the previous poll (i.e., the poll prior to the update)
-        requestBody += String.format("\"is_private\": true, \"allow_comments\": false, \"allow_indeterminate\": false, \"allow_other_option\": false, \"duplication_checking\": \"ip\", \"allow_vpn_users\": true, \"edit_vote_permissions\": \"nobody\", \"hide_participants\": true, \"is_multiple_choice\": false, \"number_of_winners\": 1, \"randomize_options\": false, \"require_voter_names\": false, \"results_visibility\": \"hidden\"}, \"poll_meta\": {\"timezone\": \"EST\"}, \"type\": \"multiple_choice\", \"remove_poll_options\": [{\"id\": \"%s\"}", pollOptionsIDs[0]);
+        requestBody += String.format("\"is_private\": true, \"allow_comments\": false, \"allow_indeterminate\": false, \"allow_other_option\": false, \"duplication_checking\": \"ip\", \"allow_vpn_users\": true, \"edit_vote_permissions\": \"nobody\", \"hide_participants\": true, \"is_multiple_choice\": false, \"number_of_winners\": 1, \"randomize_options\": false, \"require_voter_names\": false, \"results_visibility\": \"hidden\"}, \"poll_meta\": {\"timezone\": \"EST\"}, \"theme\": {\"id\": \"Qe2na0WMyBO\"}, \"type\": \"multiple_choice\", \"remove_poll_options\": [{\"id\": \"%s\"}", pollOptionsIDs[0]);
         for (int j = 1; j < pollOptionsIDs.length; j++) {
             requestBody += String.format(", {\"id\": \"%s\"}", pollOptionsIDs[j]);
         }
