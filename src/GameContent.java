@@ -12,6 +12,7 @@ public class GameContent {
 
     static void buildActualGame(GameBuilder builder) {
         GameContentScene1.build(builder);
+        GameContentScene2O.build(builder);
         GameContentScene2SH.build(builder);
     }
 

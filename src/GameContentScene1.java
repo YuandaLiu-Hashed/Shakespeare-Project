@@ -190,9 +190,8 @@ public class GameContentScene1 {
         builder.addText("“Prince Hamlet has disrespected you and been a thorn in my side for far too long,” he whispers. “I have a plan to poison the prince. I can tell you more later. Do you accept?”");
         builder.presentAndWait();
 
-        builder.addText("<Unimplemented Original Scenario 1>");
-        builder.presentAndWait();
-        builder.endGame();
+        builder.clearText();
+        builder.jumpTo("S2O.1");
 
         //----------------------------------------------------------------------
         // 5
